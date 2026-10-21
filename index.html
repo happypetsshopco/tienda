@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guante quitapelos para mascotas | Happy Pets Shop</title>
+<meta name="description" content="Guante quitapelos reutilizable para perros y gatos. Recoge el pelo del sofá, la ropa, la cama y el carro. Envío gratis y pago contra entrega en toda Colombia.">
+<!-- PENDIENTE: píxel de Meta (va aquí, con el ID de la cuenta publicitaria de mascotas) -->
+<style>
+  :root {
+    --amarillo: #f5c518;
+    --amarillo-suave: #fff6d1;
+    --carbon: #1f1f1f;
+    --gris: #5c5c5c;
+    --borde: #e6e1d6;
+    --fondo: #fffdf8;
+    --verde: #1f8a4c;
+    --rojo: #c0392b;
+    --radio: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    color: var(--carbon);
+    background: var(--fondo);
+    line-height: 1.5;
+    padding-bottom: 76px; /* espacio para el botón pegado abajo en celular */
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  .contenedor { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  /* Barra de arriba */
+  .barra {
+    background: var(--carbon);
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 12px;
+  }
+  .barra b { color: var(--amarillo); }
+
+  header.marca {
+    display: flex; align-items: center; justify-content: center;
+    padding: 14px 16px; font-weight: 800; font-size: 20px; letter-spacing: .3px;
+  }
+  header.marca span { color: var(--amarillo); text-shadow: 0 1px 0 #8a6d00; }
+
+  /* Portada */
+  .portada { display: grid; gap: 24px; padding: 8px 0 32px; }
+  @media (min-width: 860px) { .portada { grid-template-columns: 1fr 1fr; align-items: center; } }
+  .portada img { border-radius: var(--radio); background: #fff; border: 1px solid var(--borde); }
+  h1 { font-size: clamp(28px, 6vw, 42px); line-height: 1.12; margin: 0 0 12px; }
+  .bajada { color: var(--gris); font-size: 18px; margin: 0 0 18px; }
+  .precio { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .precio strong { font-size: 34px; }
+  .sellos { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; padding: 0; list-style: none; }
+  .sellos li {
+    background: var(--amarillo-suave); border: 1px solid #f0dc8a;
+    border-radius: 999px; padding: 6px 12px; font-size: 14px; font-weight: 600;
+  }
+
+  .boton {
+    display: block; width: 100%; text-align: center; text-decoration: none; border: 0; cursor: pointer;
+    background: var(--amarillo); color: var(--carbon);
+    font-size: 18px; font-weight: 800; letter-spacing: .3px;
+    padding: 16px 20px; border-radius: var(--radio);
+    box-shadow: 0 4px 0 #b38f00;
+  }
+  .boton:active { transform: translateY(2px); box-shadow: 0 2px 0 #b38f00; }
+  .boton small { display: block; font-size: 13px; font-weight: 600; opacity: .8; }
+
+  section { padding: 36px 0; }
+  section.alterna { background: #fff; border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+  h2 { font-size: clamp(24px, 4.5vw, 32px); text-align: center; margin: 0 0 24px; }
+
+  /* Beneficios */
+  .beneficios { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .beneficios { grid-template-columns: 1fr 1fr; } }
+  .beneficio { background: var(--fondo); border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px; }
+  .beneficio h3 { margin: 0 0 4px; font-size: 18px; }
+  .beneficio p { margin: 0; color: var(--gris); }
+
+  .imagen-ancha { max-width: min(640px, 100%); margin: 0 auto; border-radius: var(--radio); border: 1px solid var(--borde); }
+
+  /* Video propio (pendiente) */
+  .video-pendiente {
+    max-width: 360px; aspect-ratio: 9 / 16; margin: 0 auto;
+    display: grid; place-items: center; text-align: center; padding: 24px;
+    border: 3px dashed #d8c27a; border-radius: var(--radio); background: var(--amarillo-suave); color: var(--gris);
+  }
+
+  /* Pasos */
+  .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 24px auto 0; max-width: 640px; display: grid; gap: 10px; }
+  .pasos li { counter-increment: paso; display: flex; gap: 12px; align-items: center; font-size: 17px; }
+  .pasos li::before {
+    content: counter(paso); flex: none; width: 34px; height: 34px; border-radius: 50%;
+    display: grid; place-items: center; font-weight: 800; background: var(--carbon); color: var(--amarillo);
+  }
+
+  .dos-columnas { display: grid; gap: 16px; }
+  @media (min-width: 760px) { .dos-columnas { grid-template-columns: 1fr 1fr; } }
+  .dos-columnas img { border-radius: var(--radio); border: 1px solid var(--borde); }
+
+  /* Garantía */
+  .garantia { max-width: 720px; margin: 0 auto; display: grid; gap: 12px; }
+  .garantia div { background: #fff; border: 1px solid var(--borde); border-left: 6px solid var(--verde); border-radius: var(--radio); padding: 14px 16px; }
+  .garantia h3 { margin: 0 0 4px; font-size: 17px; }
+  .garantia p { margin: 0; color: var(--gris); }
+
+  /* Preguntas */
+  .preguntas { max-width: 720px; margin: 0 auto; }
+  details { background: #fff; border: 1px solid var(--borde); border-radius: var(--radio); padding: 14px 16px; margin-bottom: 10px; }
+  summary { font-weight: 700; cursor: pointer; font-size: 17px; }
+  details p { margin: 10px 0 0; color: var(--gris); }
+
+  /* Formulario */
+  #pedir { scroll-margin-top: 12px; }
+  .formulario {
+    max-width: 560px; margin: 0 auto; background: #fff;
+    border: 2px solid var(--carbon); border-radius: 18px; padding: 20px 16px;
+  }
+  .resumen { display: flex; gap: 12px; align-items: center; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--borde); }
+  .resumen img { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; border: 1px solid var(--borde); }
+  .resumen .total { margin-left: auto; text-align: right; font-weight: 800; font-size: 20px; }
+  .resumen .total small { display: block; font-size: 13px; font-weight: 600; color: var(--verde); }
+  label { display: block; font-weight: 700; margin: 12px 0 4px; font-size: 15px; }
+  label .opcional { font-weight: 500; color: var(--gris); }
+  input, select {
+    width: 100%; font: inherit; padding: 12px; border-radius: 10px;
+    border: 1px solid #bdb6a6; background: #fff;
+  }
+  input:focus, select:focus { outline: 3px solid var(--amarillo); border-color: var(--carbon); }
+  .fila { display: grid; gap: 0 12px; }
+  @media (min-width: 480px) { .fila { grid-template-columns: 1fr 1fr; } }
+  .ayuda { font-size: 13px; color: var(--gris); margin: 4px 0 0; }
+  .error { font-size: 13px; color: var(--rojo); margin: 4px 0 0; display: none; }
+  .invalido + .error, .invalido ~ .error { display: block; }
+  .autoriza { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; font-size: 14px; margin: 16px 0; }
+  .autoriza input { width: 20px; height: 20px; margin-top: 2px; flex: none; }
+  .cantidad { display: flex; align-items: center; gap: 10px; }
+  .cantidad button { width: 40px; height: 40px; border-radius: 10px; border: 1px solid #bdb6a6; background: #fff; font-size: 20px; cursor: pointer; }
+  .cantidad output { min-width: 24px; text-align: center; font-weight: 800; font-size: 18px; }
+  .confianza { text-align: center; font-size: 14px; color: var(--gris); margin: 12px 0 0; }
+
+  .gracias { display: none; text-align: center; padding: 12px 4px; }
+  .gracias h3 { font-size: 24px; margin: 4px 0 8px; }
+
+  /* Botón pegado abajo en celular */
+  .pegado {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    padding: 10px 16px; background: rgba(255, 253, 248, .96); border-top: 1px solid var(--borde);
+  }
+  .pegado .boton { padding: 13px 16px; font-size: 17px; }
+  @media (min-width: 860px) { .pegado { display: none; } body { padding-bottom: 0; } }
+
+  footer { background: var(--carbon); color: #ddd; padding: 28px 0 36px; font-size: 14px; text-align: center; }
+  footer a { color: #fff; }
+  footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-bottom: 12px; }
+  .borrador { background: var(--rojo); color: #fff; text-align: center; font-size: 13px; padding: 6px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="borrador">BORRADOR DE PRUEBA · todavía no recibe pedidos de verdad</div>
+
+<div class="barra">🚚 Envío <b>GRATIS</b> a toda Colombia · 💵 Pagas <b>al recibir</b></div>
+
+<header class="marca">🐾&nbsp;Happy&nbsp;<span>Pets</span>&nbsp;Shop</header>
+
+<main>
+  <div class="contenedor">
+    <div class="portada">
+      <img src="img/01.jpg" alt="Guante quitapelos para mascotas, de microfibra, con un perro y un gato" width="1000" height="1000">
+      <div>
+        <h1>Adiós a los pelos de tu mascota en el sofá, la ropa y el carro</h1>
+        <p class="bajada">Guante quitapelos reutilizable: lo pasas, el pelo se pega a la microfibra y lo retiras con la mano. Sin rodillos adhesivos ni repuestos.</p>
+        <div class="precio"><strong>$29.900</strong></div>
+        <ul class="sellos">
+          <li>🚚 Envío gratis</li>
+          <li>💵 Pago contra entrega</li>
+          <li>🐶 Perros y 🐱 gatos</li>
+        </ul>
+        <a class="boton" href="#pedir">PEDIR AHORA<small>Pagas cuando te llegue</small></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="alterna">
+    <div class="contenedor">
+      <h2>¿Por qué te va a gustar?</h2>
+      <div class="beneficios">
+        <div class="beneficio"><h3>♻️ Se usa una y otra vez</h3><p>No se gasta como los rodillos de cinta. Solo retiras el pelo con la mano o lo limpias.</p></div>
+        <div class="beneficio"><h3>🧲 Microfibra que atrapa el pelo</h3><p>La tela de la parte de abajo agarra el pelo suelto mientras frotas la superficie.</p></div>
+        <div class="beneficio"><h3>🛋️ Sirve en casi todo</h3><p>Sofá, cama, cojines, ropa, cobijas y las sillas del carro.</p></div>
+        <div class="beneficio"><h3>✋ Cómodo de usar</h3><p>Se pone como un guante: malla antideslizante y banda elástica para que no se suelte.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contenedor">
+      <h2>Míralo funcionando</h2>
+      <!-- PENDIENTE: video propio de Fernando con la muestra (formato vertical 9:16) -->
+      <div class="video-pendiente"><div><b>Aquí va el video</b><br>grabado con la muestra del guante quitando pelo de un sofá</div></div>
+    </div>
+  </section>
+
+  <section class="alterna">
+    <div class="contenedor">
+      <h2>Para todo lo que se llena de pelo</h2>
+      <img class="imagen-ancha" src="img/04.jpg" alt="Usos: mascotas, muebles y tapicería, interior del carro, ropa y textiles" loading="lazy" width="1000" height="1000">
+    </div>
+  </section>
+
+  <section>
+    <div class="contenedor">
+      <h2>Así de fácil se usa</h2>
+      <img class="imagen-ancha" src="img/05.jpg" alt="Forma de uso en 4 pasos" loading="lazy" width="1000" height="1000">
+      <ol class="pasos">
+        <li>Ponte el guante.</li>
+        <li>Frota la superficie que quieres limpiar.</li>
+        <li>Recoge con la mano el pelo que quedó en el guante.</li>
+        <li>Limpia el guante y queda listo otra vez.</li>
+      </ol>
+      <p style="text-align:center;margin-top:24px"><a class="boton" style="display:inline-block;width:auto" href="#pedir">QUIERO EL MÍO</a></p>
+    </div>
+  </section>
+
+  <section class="alterna">
+    <div class="contenedor">
+      <h2>Detalles</h2>
+      <div class="dos-columnas">
+        <img src="img/02.jpg" alt="Detalles: malla antideslizante con banda elástica, microfibra, costura reforzada" loading="lazy" width="1000" height="1000">
+        <img src="img/03.jpg" alt="Incluye un guante quitapelos" loading="lazy" width="1000" height="1000">
+      </div>
+      <p style="text-align:center;margin-top:16px"><b>Incluye:</b> 1 guante quitapelos.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="contenedor">
+      <h2>Compra tranquilo</h2>
+      <div class="garantia">
+        <div><h3>💵 Pagas cuando te llega</h3><p>No pagas nada por adelantado. Le pagas en efectivo a la transportadora al recibir.</p></div>
+        <div><h3>🛠️ Garantía</h3><p>Si te llega dañado, incompleto o con un defecto de fábrica, escríbenos con fotos o video dentro de los 2 días siguientes a la entrega y te lo cambiamos.</p></div>
+        <div><h3>↩️ Derecho de retracto</h3><p>Si te arrepientes, tienes 5 días hábiles desde la entrega para devolverlo sin usar y en su empaque (Ley 1480 de 2011). El envío de la devolución lo pagas tú.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alterna">
+    <div class="contenedor">
+      <h2>Preguntas frecuentes</h2>
+      <div class="preguntas">
+        <details><summary>¿Cómo pago?</summary><p>Contra entrega: le pagas en efectivo a la transportadora cuando te llegue el pedido.</p></details>
+        <details><summary>¿Cuánto cuesta el envío?</summary><p>Nada. El envío es gratis a toda Colombia.</p></details>
+        <!-- PENDIENTE: confirmar los tiempos reales de entrega con Dropi -->
+        <details><summary>¿Cuánto se demora en llegar?</summary><p>Normalmente entre 2 y 6 días hábiles, según tu ciudad. Antes de despacharlo te escribimos por WhatsApp para confirmar tus datos.</p></details>
+        <details><summary>¿Sirve para perros y para gatos?</summary><p>Sí. Recoge el pelo suelto que dejan los dos en muebles, ropa y carro.</p></details>
+        <details><summary>¿Se puede usar directamente sobre mi mascota?</summary><p>No, es para limpiar superficies: sofá, ropa, cama y carro. Para cepillar a tu mascota usa un cepillo hecho para eso.</p></details>
+        <details><summary>¿Y si no me sirve?</summary><p>Tienes 5 días hábiles desde la entrega para devolverlo sin usar (derecho de retracto). Y si llega con algún defecto, te lo cambiamos.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="pedir">
+    <div class="contenedor">
+      <h2>Haz tu pedido</h2>
+      <div class="formulario">
+        <form id="form-pedido" novalidate>
+          <div class="resumen">
+            <img src="img/01.jpg" alt="">
+            <div>
+              <b>Guante quitapelos</b>
+              <div class="cantidad" aria-label="Cantidad">
+                <button type="button" data-cambio="-1" aria-label="Quitar uno">−</button>
+                <output id="cantidad">1</output>
+                <button type="button" data-cambio="1" aria-label="Agregar uno">+</button>
+              </div>
+            </div>
+            <div class="total"><span id="total">$29.900</span><small>Envío gratis</small></div>
+          </div>
+
+          <div class="fila">
+            <div>
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" autocomplete="given-name" required>
+              <p class="error">Escribe tu nombre.</p>
+            </div>
+            <div>
+              <label for="apellido">Apellido</label>
+              <input id="apellido" name="apellido" autocomplete="family-name" required>
+              <p class="error">Escribe tu apellido.</p>
+            </div>
+          </div>
+
+          <label for="celular">Celular (WhatsApp)</label>
+          <input id="celular" name="celular" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="3001234567" maxlength="10" required>
+          <p class="error">Escribe un celular de 10 números que empiece por 3.</p>
+          <p class="ayuda">Te escribimos por WhatsApp para confirmar el pedido antes de enviarlo.</p>
+
+          <div class="fila">
+            <div>
+              <label for="departamento">Departamento</label>
+              <select id="departamento" name="departamento" required>
+                <option value="">Escoge…</option>
+              </select>
+              <p class="error">Escoge tu departamento.</p>
+            </div>
+            <div>
+              <label for="ciudad">Ciudad o municipio</label>
+              <select id="ciudad" name="ciudad" required disabled>
+                <option value="">Primero el departamento</option>
+              </select>
+              <p class="error">Escoge tu ciudad o municipio.</p>
+            </div>
+          </div>
+          <p class="ayuda">Bogotá está en Cundinamarca. Si tu ciudad no aparece, todavía no llegamos allá.</p>
+
+          <label for="direccion">Dirección</label>
+          <input id="direccion" name="direccion" autocomplete="street-address" placeholder="Ej.: Calle 10 # 5-23" required>
+          <p class="error">Escribe la dirección de entrega.</p>
+
+          <label for="barrio">Barrio, apartamento o referencias <span class="opcional">(opcional)</span></label>
+          <input id="barrio" name="barrio" placeholder="Ej.: Barrio Centro, apto 302, casa esquinera">
+
+          <label class="autoriza">
+            <input id="autoriza" name="autoriza" type="checkbox" required>
+            <span>Autorizo a Happy Pets Shop a usar mis datos para gestionar y entregar este pedido, según la <a href="#" target="_blank">política de privacidad</a>.</span>
+          </label>
+          <p class="error" id="error-autoriza">Necesitamos tu autorización para poder enviarte el pedido.</p>
+
+          <button class="boton" type="submit">PEDIR Y PAGAR AL RECIBIR<small id="total-boton">Total: $29.900 · envío gratis</small></button>
+          <p class="confianza">🔒 No pagas nada ahora · 💵 Pagas al recibir</p>
+        </form>
+
+        <div class="gracias" id="gracias" role="status">
+          <div style="font-size:48px">🎉</div>
+          <h3>¡Pedido recibido!</h3>
+          <p>Te vamos a escribir por WhatsApp al <b id="celular-confirmado"></b> para confirmar tus datos antes de enviarlo.</p>
+          <p class="ayuda">(Borrador: este pedido de prueba no se guardó en ningún lado.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="pegado"><a class="boton" href="#pedir">PEDIR AHORA · PAGO CONTRA ENTREGA</a></div>
+
+<footer>
+  <div class="contenedor">
+    <!-- PENDIENTE: páginas legales (privacidad Ley 1581, devoluciones y garantía, términos, contacto) -->
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Devoluciones y garantía</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <p>© 2026 Happy Pets Shop · Colombia</p>
+  </div>
+</footer>
+
+<script>
+  const PRECIO = 29900;
+  // Ciudades de la Hoja2 de la plantilla de carga masiva de Dropi (formato_ordenes_masivas.xlsx, 2026-10-21).
+  // Se escriben tal cual Dropi las espera (mayúsculas, sin tildes): si no coinciden, Dropi rechaza el pedido.
+  const CIUDADES = {
+    "ANTIOQUIA": ["APARTADO", "BARBOSA", "BELLO", "CALDAS", "CASABE - YONDO", "CAUCASIA", "COPACABANA", "DABEIBA", "DORADAL", "ENVIGADO", "GIRARDOTA", "GUARNE", "ITAGUI", "LA CEJA", "LA ESTRELLA", "LA SIERRA", "MARINILLA", "MEDELLIN", "PUERTO BERRIO", "PUERTO TRIUNFO", "RETIRO", "RIONEGRO (ANT)", "SABANETA", "SAN ANTONIO DE PRADO", "SAN JUAN DE URABA", "SAN PEDRO DE LOS MILAGROS", "ZARAGOZA"],
+    "ARAUCA": ["ARAUCA", "FORTUL", "SARAVENA", "TAME"],
+    "ATLANTICO": ["BARANOA", "BARRANQUILLA", "GALAPA", "JUAN DE ACOSTA", "MALAMBO", "PUERTO COLOMBIA", "SABANAGRANDE", "SABANALARGA", "SANTO TOMAS", "SOLEDAD", "USIACURI"],
+    "BOLIVAR": ["ARJONA B", "BAYUNCA", "CANTAGALLO", "CARTAGENA", "CASCAJAL", "EL CARMEN DE BOLIVAR", "MAGANGUE", "MALAGANA", "MARIA LA BAJA B", "MOMPOS", "MORALES (B)", "PASACABALLOS", "SAN JACINTO", "SAN JUAN NEPOMUCENO", "SAN MARTIN DE LOBA", "SANTA ROSA DEL SUR", "SIMITI", "TURBACO B", "ZAMBRANO"],
+    "BOYACA": ["AQUITANIA", "ARCABUCO", "BELEN", "BERBEO", "BOAVITA", "BUENAVISTA", "CHINAVITA", "CHIQUINQUIRA", "CHISCAS", "CHITA", "CHIVATA", "CHIVOR", "CIENEGA", "COMBITA", "CUCAITA", "DUITAMA", "EL COCUY", "EL ESPINO", "FIRAVITOBA", "GARAGOA", "GUATEQUE", "GUAYATA", "GUICAN", "JENESANO", "MARIPI", "MIRAFLORES", "MONGUA", "MONGUI", "MONIQUIRA", "MUZO", "NOBSA", "NUEVO COLON", "OICATA", "OTANCHE", "PACHAVITA", "PAEZ", "PAIPA", "PAJARITO", "PANQUEBA", "PAUNA", "PAZ DE RIO", "PESCA", "PUERTO BOYACA", "RAMIRIQUI", "RAQUIRA", "SABOYA", "SACHICA", "SAMACA", "SAN JOSE DE PARE", "SAN LUIS DE GACENO", "SAN MATEO", "SAN MIGUEL DE SEMA", "SANTA BARBARA", "SANTA MARIA", "SANTA ROSA DE VITERBO", "SANTA SOFIA", "SANTANA", "SIACHOQUE", "SOATA", "SOCHA", "SOCOTA", "SOGAMOSO", "SOMONDOCO", "SORACA", "SOTAQUIRA", "SUTAMARCHAN", "TASCO", "TENZA", "TIBANA", "TIBASOSA", "TIERRA NEGRA", "TINJACA", "TIPACOQUE", "TOCA", "TOPAGA", "TUNJA", "TURMEQUE", "TUTA", "UMBITA", "VENTAQUEMADA", "VILLA DE LEYVA", "ZETAQUIRA"],
+    "CALDAS": ["AGUADAS", "ANSERMA", "ARANZAZU", "BELALCAZAR (CL)", "BOLIVIA", "CHINCHINA", "FILADELFIA", "LA DORADA", "LA MERCED", "MANIZALES", "MANZANARES", "MARQUETALIA", "NEIRA", "NORCASIA", "PACORA", "PALESTINA", "PENSILVANIA", "RIOSUCIO", "RISARALDA", "SALAMINA", "SUPIA", "VILLAMARIA", "VITERBO"],
+    "CAQUETA": ["BELEN DE LOS ANDAQUIES", "CARTAGENA DEL CHAIRA", "CURILLO", "EL DONCELLO", "EL PAUJIL", "FLORENCIA", "LA MONTAÑITA", "PUERTO RICO", "SAN JOSE DEL FRAGUA", "SAN VICENTE DEL CAGUAN"],
+    "CASANARE": ["AGUAZUL", "HATO COROZAL", "LA CHAPARRERA", "MANI", "MONTERREY", "NUNCHIA", "OROCUE", "PASO CUSIANA", "PAZ DE ARIPORO", "TAMARA", "TAURAMENA", "TRINIDAD", "VILLA CAROLA", "VILLANUEVA (C)", "YOPAL"],
+    "CAUCA": ["BELALCAZAR (CA)", "CAJIBIO", "CALOTO", "CORINTO", "FLORENCIA", "PIENDAMO", "POPAYAN", "PUERTO TEJADA", "SANTANDER DE QUILICHAO", "TIMBA", "TIMBIO", "VILLA RICA"],
+    "CESAR": ["AGUACHICA", "BECERRIL", "BOSCONIA", "CHIMICHAGUA", "CHIRIGUANA", "CODAZZI", "CURUMANI", "EL COPEY", "EL JUNCAL", "EL PASO", "GAMARRA", "LA GLORIA", "LA JAGUA DE IBIRICO", "LA LOMA", "LA MATA", "LA PAZ", "LA SIERRA", "LAS VEGAS", "MANAURE (C)", "MINA DRUMOND PRIBBENOW", "PAILITAS", "PELAYA", "PUEBLO BELLO", "RIO DE ORO", "SAN ALBERTO", "SAN DIEGO", "SAN MARTIN (C)", "SAN ROQUE", "VALLEDUPAR"],
+    "CHOCO": ["QUIBDO"],
+    "CORDOBA": ["AYAPEL", "BUENAVISTA (COR)", "CANALETE", "CARRILLO", "CERETE", "CHIMA (C)", "CHINU", "CIENAGA DE ORO", "COTORRA", "COTORRA (I)", "EL PORVENIR (C)", "LA APARTADA Y LA FRONTERA", "LORICA", "LOS CORDOBAS", "MOMIL", "MONTELIBANO", "MONTERIA", "MOÑITOS", "PUEBLO NUEVO", "PUERTO ESCONDIDO", "PURISIMA", "SAHAGUN", "SAN ANDRES DE SOTAVENTO", "SAN ANTERO", "SAN BERNARDO DEL VIENTO", "SAN CARLOS", "SAN PELAYO", "TIERRALTA", "TUCHIN", "VALENCIA"],
+    "CUNDINAMARCA": ["AGUA DE DIOS", "ALBAN", "ANAPOIMA", "ANOLAIMA", "APULO", "ARBELAEZ", "BOGOTA", "BOJACA", "BRICEÑO", "CABRERA", "CACHIPAY", "CAJICA", "CAPARRAPI", "CAPELLANIA", "CAQUEZA", "CHIA", "CHINAUTA", "CHIPAQUE", "CHOACHI", "COTA", "CUCUNUBA", "EL COLEGIO (MESITAS)", "EL ROSAL", "EL TRIUNFO", "FACATATIVA", "FOMEQUE", "FOSCA", "FUNZA", "FUSAGASUGA", "GAMA", "GIRARDOT", "GUADUAS", "GUASCA", "GUAYABAL DE SIQUIMA", "GUAYABETAL", "LA CALERA", "LA FLORIDA", "LA MESA", "MACHETA", "MADRID", "MANTA", "MEDINA", "MOSQUERA", "NEMOCON", "NILO", "PANDI", "PARATEBUENO", "PUENTE DE PIEDRA", "PUENTE QUETAME", "PUERTO SALGAR", "QUEBRADANEGRA", "QUETAME", "QUIPILE", "SAN BERNARDO", "SAN JOAQUIN (C)", "SAN JUAN DE RIO SECO", "SANTANDERCITO", "SASAIMA", "SIBATE", "SILVANIA", "SIMIJACA", "SOACHA", "SOPO", "SUBACHOQUE", "SUBIA", "SUTATAUSA", "TABIO", "TAUSA", "TENA", "TENJO", "TOCAIMA", "TOCANCIPA", "UBALA", "UBATE", "UNE", "UTICA", "VENECIA (C)", "VIANI", "VILLAPINZON", "VILLETA", "VIOTA", "YACOPI", "ZIPAQUIRA"],
+    "GUAVIARE": ["SAN JOSE DEL GUAVIARE"],
+    "HUILA": ["ACEVEDO", "AIPE", "ALGECIRAS", "ALTAMIRA", "BARAYA", "CAMPOALEGRE", "COLOMBIA", "EL JUNCAL", "ELIAS", "FORTALECILLAS", "GARZON", "GIGANTE", "GUADALUPE", "HOBO", "IQUIRA", "LA PLATA", "NEIVA", "OPORAPA", "PAICOL", "PALERMO", "PITAL", "PITALITO", "RIVERA", "SALADOBLANCO", "SAN AGUSTIN", "SAN JOSE DE ISNOS", "SANTA MARIA", "SUAZA", "TARQUI", "TELLO", "TERUEL", "TESALIA", "TIMANA", "VILLAVIEJA", "YAGUARA", "ZULUAGA"],
+    "LA GUAJIRA": ["ALBANIA", "BARRANCAS", "DISTRACCION", "EL MOLINO", "FONSECA", "HATONUEVO", "LA MINA", "MAICAO", "PALOMINO", "PARAGUACHON", "RIOHACHA", "URIBIA", "URUMITA", "VILLANUEVA"],
+    "MAGDALENA": ["ARACATACA", "CIENAGA", "EL BANCO", "EL DIFICIL", "FUNDACION", "GAIRA", "LA GRAN VIA", "NUEVA GRANADA (M)", "PEDRAZA", "PIJIÑO", "PIVIJAY", "PLATO", "SAN SEBASTIAN DE BUENAVISTA", "SAN ZENON", "SANTA ANA (M)", "SANTA MARTA", "SITIO NUEVO", "TAGANGA"],
+    "META": ["ACACIAS", "ALTO POMPEYA", "APIAY", "BARRANCA DE UPIA", "CABUYARO", "CASTILLA LA NUEVA", "CUBARRAL", "CUMARAL", "EL CASTILLO", "EL DORADO", "FUENTE DE ORO", "GRANADA (M)", "GUAMAL", "LA PALMERA", "LEJANIAS", "MAPIRIPAN", "MEDELLIN DEL ARIARI", "MESETAS", "PACHAQUIARO", "PUERTO CONCORDIA", "PUERTO GAITAN", "PUERTO LLERAS", "PUERTO LOPEZ", "PUERTO RICO", "RESTREPO", "SAN CARLOS DE GUAROA", "SAN JUAN DE ARAMA", "SAN LORENZO", "SAN MARTIN", "VILLAVICENCIO", "VISTAHERMOSA"],
+    "NARIÑO": ["CUASPUD NUCLEO", "EL TAMBO (NA)", "GUAITARILLA", "IMUES", "IPIALES", "LA CRUZ", "LA UNION", "LLORENTE", "PASTO", "SAMANIEGO"],
+    "NORTE DE SANTANDER": ["AGUAS CLARAS", "ARBOLEDAS", "CACHIRA", "CAMPO DOS", "CHINACOTA", "CHITAGA", "CONVENCION", "CUCUTA", "DURANIA", "EL ZULIA", "LA DONJUANA", "LA ESPERANZA", "LA VEGA", "LOS PATIOS", "OCAÑA", "PAMPLONA", "PUERTO SANTANDER", "SALAZAR", "SARDINATA", "SILOS", "TIBU", "TOLEDO", "VILLA DEL ROSARIO"],
+    "PUTUMAYO": ["LA DORADA (P)", "LA HORMIGA", "MOCOA", "ORITO", "PUERTO ASIS", "PUERTO CAICEDO", "SAN FRANCISCO", "SANTANA", "SANTIAGO", "SIBUNDOY", "VILLAGARZON"],
+    "QUINDIO": ["ARMENIA (Q)", "BUENAVISTA", "CALARCA", "CIRCASIA", "EL CAIMO", "FILANDIA", "GENOVA (Q)", "LA TEBAIDA", "MONTENEGRO", "PUEBLO TAPADO", "QUIMBAYA"],
+    "RISARALDA": ["ALTAGRACIA", "APIA", "BALBOA", "BELEN DE UMBRIA", "CAIMALITO", "DOSQUEBRADAS", "GUATICA", "IRRA", "LA CELIA", "LA VIRGINIA", "MARSELLA", "MISTRATO", "PEREIRA", "QUINCHIA", "SANTA ROSA DE CABAL", "SANTUARIO"],
+    "SANTANDER": ["ACAPULCO", "ALBANIA (S)", "ARATOCA", "BARBOSA", "BARRANCABERMEJA", "BERLIN", "BUCARAMANGA", "CHARALA", "CHIPATA", "CIMITARRA", "CITE", "CONCEPCION", "CONFINES", "CONTRATACION", "COROMORO", "CURITI", "EL CARMEN DE CHUCURI", "EL CENTRO", "EL GUACAMAYO", "EL PLAYON", "ENCINO", "ENCISO", "FLORIDABLANCA", "GALAN (S)", "GAMBITA", "GIRON", "GUACA", "GUADALUPE", "GUEPSA", "LA FORTUNA", "LANDAZURI", "LEBRIJA", "LOS LAURELES", "LOS SANTOS", "MALAGA", "MATANZA", "MOGOTES", "MOLAGAVITA", "OCAMONTE", "OIBA", "OLIVAL", "ONZAGA", "PALMAS DEL SOCORRO", "PARAMO", "PIEDECUESTA", "PINCHOTE", "PUENTE NACIONAL", "PUERTO ARAUJO", "PUERTO PARRA", "PUERTO WILCHES", "RIONEGRO", "SABANA DE TORRES", "SAN ANDRES", "SAN GIL", "SAN RAFAEL", "SAN VICENTE DE CHUCURI", "SANTA HELENA DEL OPON", "SOCORRO", "SUAITA", "SURATA", "TIENDA NUEVA", "TONA", "VALLE DE SAN JOSE", "VELEZ", "VILLANUEVA", "YARIMA", "ZAPATOCA"],
+    "SUCRE": ["COROZAL", "COVEÑAS", "GALERAS", "OVEJAS", "PALMITO", "SAMPUES", "SAN MARCOS", "SAN ONOFRE", "SAN PEDRO", "SINCE", "SINCELEJO", "SUCRE (S)", "TOLU"],
+    "TOLIMA": ["ALVARADO", "AMBALEMA", "ARMERO", "ATACO", "BUENOS AIRES", "CAJAMARCA", "CARMEN DE APICALA", "CHAPARRAL", "CHICORAL", "COYAIMA", "CUNDAY", "DOLORES", "ESPINAL", "FLANDES", "GUAMO", "HERVEO", "HONDA", "IBAGUE", "ICONONZO", "LERIDA", "LIBANO", "MARIQUITA", "MELGAR", "MURILLO", "NATAGAIMA", "OLAYA HERRERA", "ORTEGA", "PIEDRAS", "PRADO", "PURIFICACION", "RIOBLANCO", "ROVIRA", "SALDAÑA", "SAN ANTONIO", "SAN LUIS", "SUAREZ", "VALLE DE SAN JUAN", "VENADILLO", "VILLARRICA (T)"],
+    "VALLE": ["ANDALUCIA", "ANSERMA NUEVO", "ARGELIA (V)", "BOLIVAR (V)", "BORRERO AYERBE", "BUENAVENTURA", "BUGA", "BUGALAGRANDE", "CAICEDONIA", "CALI", "CANDELARIA", "CARTAGO", "DARIEN (CALIMA)", "EL AGUILA", "EL CAIRO", "EL CERRITO", "EL DOVIO", "EL PLACER (V)", "EL QUEREMAL", "FLORIDA", "GINEBRA", "GUACARI", "JAMUNDI", "LA PAILA", "LA UNION (V)", "LA VICTORIA (V)", "OBANDO", "PALMIRA", "PRADERA", "RESTREPO", "ROLDANILLO", "ROZO", "SAN PEDRO(V)", "SEVILLA", "TORO", "TRUJILLO", "TULUA", "VERSALLES", "VILLA GORGONA", "YOTOCO", "YUMBO", "ZARZAL"]
+  };
+
+  const pesos = n => "$" + n.toLocaleString("es-CO");
+  const form = document.getElementById("form-pedido");
+  const selectDepartamento = document.getElementById("departamento");
+  const selectCiudad = document.getElementById("ciudad");
+
+  for (const d of Object.keys(CIUDADES)) selectDepartamento.add(new Option(d, d));
+
+  selectDepartamento.addEventListener("change", () => {
+    selectCiudad.length = 1;
+    const ciudades = CIUDADES[selectDepartamento.value] || [];
+    for (const c of ciudades) selectCiudad.add(new Option(c, c));
+    selectCiudad.disabled = ciudades.length === 0;
+    selectCiudad.options[0].text = ciudades.length ? "Escoge…" : "Primero el departamento";
+  });
+
+  let cantidad = 1;
+  form.querySelectorAll("[data-cambio]").forEach(b => b.addEventListener("click", () => {
+    cantidad = Math.min(5, Math.max(1, cantidad + Number(b.dataset.cambio)));
+    document.getElementById("cantidad").textContent = cantidad;
+    document.getElementById("total").textContent = pesos(PRECIO * cantidad);
+    document.getElementById("total-boton").textContent = "Total: " + pesos(PRECIO * cantidad) + " · envío gratis";
+  }));
+
+  // El botón pegado abajo se esconde cuando el formulario ya está a la vista
+  const pegado = document.querySelector(".pegado");
+  new IntersectionObserver(([entrada]) => {
+    pegado.style.visibility = entrada.isIntersecting ? "hidden" : "visible";
+  }).observe(document.getElementById("pedir"));
+
+  const celular = document.getElementById("celular");
+  celular.addEventListener("input", () => { celular.value = celular.value.replace(/\D/g, "").slice(0, 10); });
+
+  const reglas = {
+    nombre: v => v.trim().length >= 2,
+    apellido: v => v.trim().length >= 2,
+    celular: v => /^3\d{9}$/.test(v),
+    departamento: v => v !== "",
+    ciudad: v => (CIUDADES[selectDepartamento.value] || []).includes(v),
+    direccion: v => v.trim().length >= 5,
+  };
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let primero = null;
+    for (const [campo, valido] of Object.entries(reglas)) {
+      const el = form.elements[campo];
+      const ok = valido(el.value);
+      el.classList.toggle("invalido", !ok);
+      if (!ok && !primero) primero = el;
+    }
+    const autoriza = form.elements.autoriza.checked;
+    document.getElementById("error-autoriza").style.display = autoriza ? "none" : "block";
+    if (!autoriza && !primero) primero = form.elements.autoriza;
+    if (primero) { primero.focus(); return; }
+
+    // PENDIENTE: enviar el pedido a Supabase (a través de una función en Vercel)
+    document.getElementById("celular-confirmado").textContent = celular.value;
+    form.style.display = "none";
+    document.getElementById("gracias").style.display = "block";
+  });
+</script>
+</body>
+</html>
