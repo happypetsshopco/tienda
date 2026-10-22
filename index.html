@@ -144,6 +144,8 @@
   .cantidad output { min-width: 24px; text-align: center; font-weight: 800; font-size: 18px; }
   .confianza { text-align: center; font-size: 14px; color: var(--gris); margin: 12px 0 0; }
 
+  .boton:disabled { opacity: .6; }
+  .trampa { position: absolute; left: -9999px; }
   .gracias { display: none; text-align: center; padding: 12px 4px; }
   .gracias h3 { font-size: 24px; margin: 4px 0 8px; }
 
@@ -163,7 +165,7 @@
 </head>
 <body>
 
-<div class="borrador">BORRADOR DE PRUEBA · todavía no recibe pedidos de verdad</div>
+<div class="borrador">BORRADOR DE PRUEBA · todavía no despachamos pedidos</div>
 
 <div class="barra">🚚 Envío <b>GRATIS</b> a toda Colombia · 💵 Pagas <b>al recibir</b></div>
 
@@ -332,6 +334,8 @@
           </label>
           <p class="error" id="error-autoriza">Necesitamos tu autorización para poder enviarte el pedido.</p>
 
+          <input class="trampa" name="empresa" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="error" id="error-envio" style="display:none">No pudimos enviar tu pedido. Revisa tu conexión e intenta de nuevo.</p>
           <button class="boton" type="submit">PEDIR Y PAGAR AL RECIBIR<small id="total-boton">Total: $29.900 · envío gratis</small></button>
           <p class="confianza">🔒 No pagas nada ahora · 💵 Pagas al recibir</p>
         </form>
@@ -340,7 +344,6 @@
           <div style="font-size:48px">🎉</div>
           <h3>¡Pedido recibido!</h3>
           <p>Te vamos a escribir por WhatsApp al <b id="celular-confirmado"></b> para confirmar tus datos antes de enviarlo.</p>
-          <p class="ayuda">(Borrador: este pedido de prueba no se guardó en ningún lado.)</p>
         </div>
       </div>
     </div>
@@ -437,7 +440,7 @@
     direccion: v => v.trim().length >= 5,
   };
 
-  form.addEventListener("submit", e => {
+  form.addEventListener("submit", async e => {
     e.preventDefault();
     let primero = null;
     for (const [campo, valido] of Object.entries(reglas)) {
@@ -451,7 +454,36 @@
     if (!autoriza && !primero) primero = form.elements.autoriza;
     if (primero) { primero.focus(); return; }
 
-    // PENDIENTE: enviar el pedido a Supabase (a través de una función en Vercel)
+    // El pedido va a la función de Vercel (api/pedido.js), que lo guarda en Supabase
+    const boton = form.querySelector("button[type=submit]");
+    const errorEnvio = document.getElementById("error-envio");
+    errorEnvio.style.display = "none";
+    boton.disabled = true;
+    boton.firstChild.textContent = "ENVIANDO…";
+    let ok = false;
+    try {
+      const r = await fetch("/api/pedido", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: form.elements.nombre.value,
+          apellido: form.elements.apellido.value,
+          celular: celular.value,
+          departamento: selectDepartamento.value,
+          ciudad: selectCiudad.value,
+          direccion: form.elements.direccion.value,
+          barrio: form.elements.barrio.value,
+          cantidad,
+          autoriza,
+          empresa: form.elements.empresa.value,
+        }),
+      });
+      ok = r.ok;
+    } catch {}
+    boton.disabled = false;
+    boton.firstChild.textContent = "PEDIR Y PAGAR AL RECIBIR";
+    if (!ok) { errorEnvio.style.display = "block"; return; }
+
     document.getElementById("celular-confirmado").textContent = celular.value;
     form.style.display = "none";
     document.getElementById("gracias").style.display = "block";
