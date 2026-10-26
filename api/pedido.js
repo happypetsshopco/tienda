@@ -24,6 +24,8 @@ function validar(b) {
     direccion: texto(b.direccion, 150),
     barrio: texto(b.barrio, 150) || null,
     cantidad: Number(b.cantidad),
+    // Quién le mandó el enlace al cliente (?v=sebas). Si viene raro, se ignora: el pedido igual entra.
+    vendedor: /^[a-z]{2,15}$/.test(b.vendedor) ? b.vendedor : null,
   };
   if (p.nombre.length < 2) return "nombre";
   if (p.apellido.length < 2) return "apellido";

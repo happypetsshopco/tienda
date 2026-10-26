@@ -440,6 +440,10 @@
     direccion: v => v.trim().length >= 5,
   };
 
+  // Enlace de vendedor (?v=sebas): el cliente ya cerró la compra por WhatsApp, así que va directo al formulario
+  const vendedor = (new URLSearchParams(location.search).get("v") || "").toLowerCase();
+  if (vendedor) addEventListener("load", () => form.scrollIntoView());
+
   form.addEventListener("submit", async e => {
     e.preventDefault();
     let primero = null;
@@ -476,6 +480,7 @@
           cantidad,
           autoriza,
           empresa: form.elements.empresa.value,
+          vendedor,
         }),
       });
       ok = r.ok;
