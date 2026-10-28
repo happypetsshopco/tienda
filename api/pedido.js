@@ -1,13 +1,11 @@
 // Recibe el pedido del formulario y lo guarda en Supabase (tabla public.pedidos).
 // Iria para Fernando, 2026-10-22.
 //
-// Variables de entorno (se ponen en Vercel → Settings → Environment Variables, NUNCA en este repo):
-//   SUPABASE_URL         → https://<proyecto>.supabase.co
-//   SUPABASE_SECRET_KEY  → la llave secreta del servidor (sb_secret_… o la service_role antigua)
-//
+// La conexión con Supabase (y sus variables de entorno) está en _supabase.js.
 // El precio y el producto los pone el servidor: no se confía en lo que mande el navegador.
 
 const CIUDADES = require("./_ciudades.json");
+const { supabase } = require("./_supabase");
 
 const PRODUCTO_ID = 2283465; // guante quitapelos (Dropi, Impowinner)
 const PRECIO = 29900;        // por unidad, envío gratis
@@ -53,26 +51,22 @@ module.exports = async (req, res) => {
   const p = validar(b);
   if (typeof p === "string") return res.status(400).json({ ok: false, campo: p });
 
-  const { SUPABASE_URL, SUPABASE_SECRET_KEY } = process.env;
-  if (!SUPABASE_URL || !SUPABASE_SECRET_KEY) {
-    console.error("Faltan SUPABASE_URL o SUPABASE_SECRET_KEY en las variables de entorno de Vercel");
+  let r;
+  try {
+    r = await supabase("pedidos", {
+      method: "POST",
+      prefer: "return=minimal",
+      body: {
+        ...p,
+        producto_id: PRODUCTO_ID,
+        precio_total: PRECIO * p.cantidad,
+        autoriza_datos: true,
+      },
+    });
+  } catch (err) {
+    console.error(err.message);
     return res.status(500).json({ ok: false });
   }
-
-  // Las llaves nuevas (sb_secret_…) van solo en "apikey"; la service_role antigua (JWT) va en los dos
-  const headers = { apikey: SUPABASE_SECRET_KEY, "Content-Type": "application/json", Prefer: "return=minimal" };
-  if (!SUPABASE_SECRET_KEY.startsWith("sb_")) headers.Authorization = "Bearer " + SUPABASE_SECRET_KEY;
-
-  const r = await fetch(SUPABASE_URL.replace(/\/+$/, "") + "/rest/v1/pedidos", {
-    method: "POST",
-    headers,
-    body: JSON.stringify({
-      ...p,
-      producto_id: PRODUCTO_ID,
-      precio_total: PRECIO * p.cantidad,
-      autoriza_datos: true,
-    }),
-  });
 
   if (!r.ok) {
     console.error("Supabase respondió", r.status, await r.text());
